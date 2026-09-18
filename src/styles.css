@@ -34,7 +34,7 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 }
 
 .shell {
-  max-width: 1180px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -251,10 +251,131 @@ textarea {
   padding: 32px 12px;
 }
 
+.board {
+  display: grid;
+  gap: 14px;
+}
+
+.pool, .driver-col {
+  background: #fff;
+  border: 1px solid #dfe7f1;
+  border-radius: 8px;
+  padding: 16px;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.pool.over, .driver-col.over {
+  border-color: #176b87;
+  box-shadow: 0 0 0 3px rgba(23, 107, 135, .18);
+}
+
+.drivers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.driver-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.driver-head h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.loads {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.load-row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  color: #536078;
+  font-size: 13px;
+}
+
+.bar-fill.over-limit {
+  background: linear-gradient(90deg, #c84b31, #e08a6c);
+}
+
+.over-limit-text {
+  color: #c84b31;
+}
+
+.order-card {
+  touch-action: none;
+  user-select: none;
+}
+
+.order-card.dragging {
+  opacity: .85;
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(23, 32, 51, .18);
+}
+
+.order-card.locked {
+  cursor: not-allowed;
+  background: #f4f6f9;
+}
+
+.hint {
+  color: #8a94a8;
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.conflict-box {
+  border: 1px solid #e5b3a8;
+  background: #fdf1ee;
+  color: #8f3220;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  display: grid;
+  gap: 6px;
+}
+
+.conflict-box p {
+  margin: 0;
+}
+
+.conflict-title {
+  font-weight: 700;
+}
+
+.conflict-box button {
+  justify-self: start;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.form-error {
+  margin: 0;
+  color: #c84b31;
+  font-size: 13px;
+}
+
+.status.st-pending { background: #eceff4; color: #536078; }
+.status.st-assigned { background: #e8f4ef; color: #14724f; }
+.status.st-delivering { background: #fdf0e2; color: #a05a12; }
+.status.st-done { background: #e7edf4; color: #445069; }
+
 @media (max-width: 860px) {
   .app { padding: 18px; }
   .topbar, .workspace { grid-template-columns: 1fr; }
   .stack { justify-content: flex-start; }
   .metrics { grid-template-columns: 1fr; }
   .details { grid-template-columns: 1fr; }
+  .drivers { grid-template-columns: 1fr; }
 }
